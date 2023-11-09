@@ -1,0 +1,106 @@
+body{
+    background-image: url(https://media.giphy.com/media/U3qYN8S0j3bpK/giphy.gif);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family:Arial, Helvetica, sans-serif;
+}
+.header{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 6px;
+    font-size: 22px;
+    font-family:Arial, Helvetica, sans-serif;
+    
+}
+.heading{
+color: white;
+}
+.d-flex{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.mass{
+    padding: 10px;
+    padding-right: 75px;
+    outline: none;
+    font-weight: 600;
+}
+.selector{
+    padding: 10px;
+    padding-right: 28px;
+    margin-left: 5px;
+    outline: none;
+    text-transform: uppercase;
+    
+ }
+ .option{
+    background-color: grey;
+ }
+.buttn{
+    background-color: grey;
+    color: white;
+    padding: 12px;
+    border-radius: 4px;
+    margin: 8px;
+    border: none;
+    outline: none;
+
+}
+.result-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    width: 75%;
+    margin-top: 12px;
+    padding: 1rem;
+    margin-bottom: 24px;
+}
+#planet-img{
+    height: 22rem;
+    width: 22rem;
+    padding: 10px;
+
+}
+.result-txt{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3) ;
+    color: white;
+    width: 60%;
+    height: 65%;
+    border-radius: 2px;
+}
+.weight{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.3);
+    color: white;
+    border-radius: 100%;
+    height: 120px;
+    width: 120px;
+}
+.txt{
+    display: flex;
+    flex-direction: row;
+}
+.d-none{
+    display: none;
+}

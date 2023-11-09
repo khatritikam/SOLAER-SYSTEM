@@ -1,0 +1,166 @@
+// write your code here...
+
+# Question 1
+Table Name: invoices
+Invoice id | invoice date   | user id   | final price |  cuisine
+1          | 22-05-2022     | 36        | 356.98.     |    A
+2          |  22-05-2022    | 630       | 530.00      |    A
+3          | 03-04-2022     | 45        | 78.00       |    B
+
+## Code here
+# 2022, 2021, 2020
+Assume we have Last three years data of a restaurant as mentioned below:
+can you write a sql query which will find “In the year 2021, which month has the maximum total sales”?
+
+Month | Sales
+## #records: 1
+# Assume no two months has same sales amount
+
+
+from -> where -> group by -> select -> order by 
+
+select 
+    extract(year from invoice_date) as year,
+    extract(month from invoice_date) as month,
+    sum(final_price) as total_sales
+from 
+    invoices 
+where 
+    extract(year from invoice_date) = 2021
+group by extract(year from invoice_date), extract(month from invoice_date) 
+order by total_sales desc 
+limit 1
+
+
+#### identify the month with maximum sales for each year
+Year | Month | Sales
+## #records: 3
+
+
+
+with base as (
+select 
+    extract(year from invoice_date) as year,
+    extract(month from invoice_date) as month,
+    sum(final_price) as total_sales
+from 
+    invoices 
+group by extract(year from invoice_date), extract(month from invoice_date) 
+
+), 
+
+base1 as (
+select 
+    *, 
+    dense_rank() over(partition by year order by total_sales desc) as rnk
+    from base
+)
+
+select 
+    year,
+    month, 
+    total_sales 
+from 
+    base1 
+where rnk =1;
+
+
+
+Table Name: invoices
+# Question 2
+Invoice id | invoice date   | user id   | final price | Qty  | Cuisine 
+1          | 22-05-2022     | 36        | null        | 1.0  |  A0/2
+2          |  22-05-2022    | 630       | 530.00      | null |  B
+3          | 03-04-2022     | 45        | null        | 3.0  |  A
+
+# find proportion of nulls in final price and qty by each cuisine. 
+
+# proportion of nulls in final price =  nulls in fp / total records (for each cuisine)
+# proportion of nulls in qty =  nulls in qty / total records
+
+Cuisine | fp_null_% | qty_null_%
+A         2/2           0/2
+B          0/1          1/1
+C
+# records: #cuisine
+case when 
+
+
+select 
+sum(case when final_price is null then 1 else 0 end)/ count(*) as fp_null_sum,
+sum(case when Qty is null then 1 else 0 end)/ count(*) as qty_null_sum,
+from invoices 
+group by Cuisine;
+
+
+
+select cuisine, 1- count(fp)/ count(*),
+       1- count(qty)/ count(*)
+from invoices 
+group by cusine;
+
+where, group by 
+window function
+case when 
+joins
+self joins;
+
+
+# book my show:
+Write a SQL query to display all combinations of 3 vacant consecutive seats on a particular day.
+
+Show_name | seat no | is_available
+Mor         1         0
+Mor         2         1
+Mor         3         1
+Mor         4         1
+Mor         5         0
+Mor         6         1
+Eve         1         1
+Eve         2         1
+Eve         3         1
+
+# do not use lag/ lead/ window functions
+# *self join*
+
+Show name | seat1 | seat2 | seat3
+Mor          2      3        4
+Eve          1       2       3
+
+select distinct s1.seat_no from show s1 join show s2 on abs(s1.seat_no - s2.seat_no) = 1 and s1.is_available = 1 and s2.is_available = 1
+
+# 8527088693
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
